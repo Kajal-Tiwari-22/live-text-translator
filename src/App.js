@@ -87,19 +87,18 @@ const App = () => {
       </header>
 
       <div className="translator-container">
+        {/* Left Box */}
         <div className="translator-panel">
           <div className="language-select">
             <select value={sourceLang} onChange={(e) => setSourceLang(e.target.value)}>
               {languages.map((lang) => <option key={lang}>{lang}</option>)}
             </select>
           </div>
-
           <textarea
             placeholder="Enter text to translate..."
             value={input}
             onChange={(e) => setInput(e.target.value)}
           />
-
           <div className="controls">
             <span>{input.length} characters | {wordCount(input)}/{WORD_LIMIT} words</span>
             <div>
@@ -108,17 +107,21 @@ const App = () => {
           </div>
         </div>
 
+        {/* Vertical Divider */}
+        <div className="divider" />
+
+        {/* Center Swap Button */}
         <div className="translator-center">
-          <button className="icon-btn big" onClick={handleSwap}><FaSync /></button>
+          <button className="swap-btn" onClick={handleSwap}><FaSync /></button>
         </div>
 
+        {/* Right Box */}
         <div className="translator-panel">
           <div className="language-select">
             <select value={targetLang} onChange={(e) => setTargetLang(e.target.value)}>
               {languages.map((lang) => <option key={lang}>{lang}</option>)}
             </select>
           </div>
-
           <div className="output-box">
             {translated || <span className="placeholder">Translation will appear here...</span>}
             {translated && (
